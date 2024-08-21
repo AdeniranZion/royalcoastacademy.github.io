@@ -1,194 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f0f0f0;
-        }
-        .container-head {
-            background-color: #ffebcc;
-            padding: 20px 30px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .main-content, .sidebar {
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .main-content img {
-            max-width: 100px;
-            max-height: 100px;
-            margin-right: 15px;
-            border-radius: 8px;
-        }
-        .card-temp-1 {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f8f8f8;
-            transition: background-color 0.3s;
-        }
-        .card-temp-1:hover {
-            background-color: #ececec;
-        }
-        .card-temp-1 h3 {
-            font-size: 1.2rem;
-            margin: 0;
-        }
-        .card-temp-1 p {
-            margin: 10px 0;
-        }
-        .read-more {
-            color: #007bff;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .read-more:hover {
-            text-decoration: underline;
-        }
-        .sidebar h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        .sidebar a {
-            text-decoration: none;
-            color: #444;
-        }
-        @media (max-width: 768px) {
-            .main-content, .sidebar {
-                padding: 15px;
-            }
-            .container {
-                margin: 0 15px;
-            }
-            .card-temp-1 {
-                flex-direction: column;
-                text-align: center;
-            }
-            .card-temp-1 img {
-                margin-bottom: 10px;
-            }
-        }
-    </style>
+
+<?php
+    include_once 'partials/header.php';
+?>
+<style>
+    body {
+        background-color: #f0f0f0;
+    }
+    .blog-header {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+        padding: 30px;
+    }
+    .blog-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+    .blog-header p {
+        color: #6c757d;
+        font-size: 1.5rem;
+    }
+    .blog-main img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    .blog-main h2 {
+        font-size: 1.5rem;
+        margin: 15px 0;
+    }
+    .blog-meta {
+        font-size: 1.2rem;
+        color: #6c757d;
+        margin-bottom: 10px;
+    }
+    .blog-sidebar img {
+        width: 100%;
+        border-radius: 5px;
+        max-height: 30vh;
+        object-fit: cover;
+    }
+    .blog-sidebar h4 {
+        font-size: 1.4rem;
+        margin: 15px 0 5px;
+    }
+    .blog-sidebar .blog-meta {
+        font-size: 1.2rem;
+    }
+</style>
 </head>
 <body>
-    <div class="container-head">
-        <h1>Modern Blog</h1>
+    <div style="background-color: #671470; padding: 35px; padding-right: 12.5%; text-align: right; position: relative;">
+        <h1 class="logo" style="margin: 0; color: #fff8ec; font-size: 3rem;"  data-aos="fade-right">News</h1>
+        <div style="position: absolute; bottom: 0; right: 0; width: 90px; height: 2px; background-color: white; margin-right:12%;" data-aos="fade-left"></div>
     </div>
     <div class="container">
+        <div class="blog-header">
+            <h1>Latest News</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
+        </div>
         <div class="row">
-            <div class="col-lg-8 col-md-7">
-                <div id="main-content" class="main-content">
-                    <!-- Initial content -->
-                    <div class="card-temp-1">
-                        <img src="images/IMG-20240616-WA0027.jpg" alt="post1">
-                        <div>
-                            <h3>Exploring the Future of Technology</h3>
-                            <p>The tech industry is rapidly evolving, with new innovations emerging every day...</p>
-                            <span class="read-more" onclick="loadContent('post1')">Read More</span>
-                        </div>
-                    </div>
-                    <div class="card-temp-1">
-                        <img src="images/IMG-20240616-WA0023.jpg" alt="post2">
-                        <div>
-                            <h3>Sustainability in Modern Architecture</h3>
-                            <p>Green buildings and sustainable architecture are becoming the norm in today's world...</p>
-                            <span class="read-more" onclick="loadContent('post2')">Read More</span>
-                        </div>
-                    </div>
-                    <div class="card-temp-1">
-                        <img src="images/IMG-20240616-WA0024.jpg" alt="post3">
-                        <div>
-                            <h3>How to Stay Productive Working from Home</h3>
-                            <p>Remote work has become a permanent fixture for many. Learn how to stay productive...</p>
-                            <span class="read-more" onclick="loadContent('post3')">Read More</span>
-                        </div>
-                    </div>
+            <div class="col-md-8 blog-main">
+                <img src="images/IMG-20240616-WA0023.jpg" alt="Main Post">
+                <h2>Even the all-powerful Pointing has no control about the blind texts</h2>
+                <!-- <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p> -->
+                <p class="blog-meta"><i class="fas fa-calendar"></i> May 29, 2018 &nbsp; | &nbsp; <i class="fas fa-user"></i> Admin <i class="fas fa-comments"></i> 19</p>
+                <div class="col-md-10 blog-body">
+                    <p>World Malaria Day is an international observance commemorated every year on 25 April and recognizes global efforts to control malaria. Globally, 3.3 billion people in 106 countries are at risk of malaria. In 2012, malaria caused an estimated 627,000 deaths, mostly among African children.
+
+Royal Coast Academy’s Initiatives
+At Royal Coast Academy, we believe in the power of education to drive change. In honor of World Malaria Day, our school has organized a series of activities designed to educate our students and community about malaria: Educational Workshops: Our science department has conducted workshops on how malaria spreads, the symptoms of the disease, and the importance of mosquito control and bed nets. Art and Essay Competitions: Students participated in art and essay competitions themed around malaria awareness, with winners receiving recognition at a special assembly. Fundraising for Malaria Prevention: The school has launched a fundraising campaign, with proceeds going to organizations dedicated to providing mosquito nets and medicines to malaria-endemic regions. The Global Fight Against Malaria World Malaria Day serves as a reminder of the ongoing global effort to end malaria. According to the World Health Organization (WHO), over 600,000 people die from malaria each year, most of them young children in sub-Saharan Africa. However, with continued investment in prevention, treatment, and research, there is hope for a malaria-free future. How You Can Help Students and parents at Royal Coast Academy can make a difference by supporting global malaria initiatives. Whether by donating to organizations like the Against Malaria Foundation or spreading awareness in your community, every action counts. Conclusion As we observe World Malaria Day, let’s remember that education is a powerful tool in the fight against malaria. At Royal Coast Academy, we are proud to stand with the global community in raising awareness and taking action to end this devastating disease. Together, we can make a difference.
+                        <br>
+                        <br>
+                    </p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-5">
-                <div class="sidebar">
-                    <h3>Other News</h3>
-                    <ul>
-                        <li><a href="#" onclick="loadContent('post4')">Understanding Cryptocurrency</a></li>
-                        <li><a href="#" onclick="loadContent('post5')">The Rise of Electric Vehicles</a></li>
-                        <li><a href="#" onclick="loadContent('post6')">AI in Healthcare</a></li>
-                        <li><a href="#" onclick="loadContent('post7')">The Impact of Social Media</a></li>
-                    </ul>
+            <div class="col-md-4 blog-sidebar">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <img src="images/IMG-20240616-WA0024.jpg" alt="Sidebar Post">
+                        <h4>Even the all-powerful Pointing has no control about the blind texts</h4>
+                        <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <img src="images/IMG-20240616-WA0027.jpg" alt="Sidebar Post">
+                        <h4>Even the all-powerful Pointing has no control about the blind texts</h4>
+                        <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <img src="images/IMG-20240616-WA0023.jpg" alt="Sidebar Post">
+                        <h4>Even the all-powerful Pointing has no control about the blind texts</h4>
+                        <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <img src="images/IMG-20240616-WA0025.jpg" alt="Sidebar Post">
+                        <h4>Even the all-powerful Pointing has no control about the blind texts</h4>
+                        <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+<?php include_once "partials/footer.php"; ?>
 
-    <script>
-        function loadContent(postId) {
-            const content = {
-                post1: `
-                    <div class="post-content">
-                        <img src="images/IMG-20240616-WA0027.jpg" alt="future of technology">
-                        <h2>The Tech Industry's New Era</h2>
-                        <p>The technology sector is on the brink of a revolution, with advancements in AI, blockchain, and quantum computing. These innovations are set to change the way we live and work...</p>
-                        <p>As we move into the future, it's important to stay informed about the trends shaping the tech landscape...</p>
-                        <p>Stay ahead of the curve with our expert insights and analysis...</p>
-                        <p>Learn more about the future of technology and how it will impact your business...</p
-                        <p>Discover the latest developments in AI, blockchain, and quantum computing...</p>
-                        <p>Get the inside scoop on the tech industry's hottest trends...</p>
-                        <p>Read more about the tech industry's new era...</p>
-                        <a href="blog.php">Go back</a>
-                    </div>
-                `,
-                post2: `
-                    <div class="post-content">
-                        <img src="images/yemi2.jpg" alt="modern architecture">
-                        <h2>Sustainability in Modern Architecture</h2>
-                        <p>Green buildings and sustainable architecture are becoming the norm in today's world. Architects are focusing on designs that minimize environmental impact and reduce energy consumption...</p>
-                        <p>From smart materials to renewable energy integration, the future of architecture looks green and sustainable...</p>
-                    </div>
-                `,
-                post3: `
-                    <div class="post-content">
-                        <img src="images/yemi3.jpg" alt="productivity">
-                        <h2>How to Stay Productive Working from Home</h2>
-                        <p>Remote work has become a permanent fixture for many. To stay productive, it's essential to establish a routine, create a dedicated workspace, and take regular breaks...</p>
-                        <p>Staying connected with colleagues and maintaining a work-life balance are also key factors in ensuring long-term productivity...</p>
-                    </div>
-                `,
-                post4: `
-                    <div class="post-content">
-                        <h2>Understanding Cryptocurrency</h2>
-                        <p>Cryptocurrencies have taken the world by storm, with Bitcoin and Ethereum leading the charge. But how do they work, and what does the future hold for digital currencies?...<p>
-                    </div>
-                `,
-                post5: `
-                    <div class="post-content">
-                        <h2>The Rise of Electric Vehicles</h2>
-                        <p>Electric vehicles (EVs) are rapidly becoming mainstream, with advancements in battery technology and charging infrastructure. But what challenges lie ahead as the world shifts towards EVs?...<p>
-                    </div>
-                `,
-                post6: `
-                    <div class="post-content">
-                        <h2>AI in Healthcare</h2>
-                        <p>Artificial intelligence is revolutionizing healthcare, from diagnostic tools to personalized treatment plans. But what ethical considerations must be addressed as AI continues to grow in this field?...<p>
-                    </div>
-                `,
-                post7: `
-                    <div class="post-content">
-                        <h2>The Impact of Social Media</h2>
-                        <p>Social media has transformed the way we communicate and consume information. But what are the long-term effects of this shift on society and individual well-being?...<p>
-                    </div>
-                `
-            };
-
-            document.getElementById('main-content').innerHTML = content[postId];
-        }
-    </script>
 </body>
 </html>

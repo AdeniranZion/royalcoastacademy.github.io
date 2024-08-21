@@ -4,9 +4,10 @@ include 'partials/db_connect.php';
 <html>
 <body>
 
-<div id="loadingOverlay" class="loading-overlay">
+<!-- <div id="loadingOverlay" class="loading-overlay">
     <div class="spinner"></div>
-</div>
+</div> -->
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Simulate a delay of 3 seconds (3000 milliseconds) before fading out the loading overlay
@@ -50,7 +51,7 @@ include 'partials/db_connect.php';
           <li>Basic Classes</li>
           <li>JSS 1</li>
         </div>
-        <a href="admissions.php" class="btn">Enroll Now</a>
+        <a href="admissionpage.php" class="btn">Enroll Now</a>
       </div>
     </div>
   </div>
@@ -266,10 +267,7 @@ include 'partials/db_connect.php';
     </div>
 </section>
 
-<?php include 'animate.php'; 
-// includeRoyalGazzete();
-//includeUpcomingEvents();
-?>
+<?php include 'animate.php'; ?>
 
 <!--Admissions-->
 <section data-aos="fade-up" data-aos-duration="1500" style="display: flex; justify-content: center; align-items: center; background-image: url('images/IMG_2543.jpg'); background-size: cover; background-position: center;">
@@ -307,25 +305,20 @@ include 'partials/db_connect.php';
       <h3 style="font-size: 48px;" class="about-title">Contact <span style="color: #e070dd;">Us</span></h3>
    </div>
 </div>
-         <section class="contact" data-aos="fade-up" data-aos-duration="1000" style="padding: 24px; padding-top:10px;">
-                  <div class="row" style="background-color: #fff; padding: 24px; padding-top:1px;">
-                        <div class="p-24 mx-auto sm:max-w-md md:max-w-lg lg:max-w-xl">
-                              <form action="contact_script.php" style="padding-top:1px;">
-                                 <h3 class="heading">You can send a message. We'll be delighted to hear from you</h3>
-                                       <input type="text" name="name" placeholder="Full Name" class="box mb-4">
-                                       <input type="email" name="email" placeholder="Email Address" class="box mb-4">
-                                       <input type="text" name="phone" placeholder="Phone Number" class="box mb-4">
-                                       <textarea name="message" class="box mb-4" placeholder="Message" id="" cols="30" rows="10"></textarea>
-                                       <input type="submit" value="Submit" class="btn bg-blue-500 hover:bg-blue-600 font-bold py-2 px-6 rounded">
-                              </form>
-                        </div>
-                  </div>
-         </section>
-
-         <!-- <iframe src="https://script.google.com/macros/s/AKfycbwAFyzOsC0K3Ma3bknMofuhZjq5MZqZBMDS_6GDF_HkDF6dpryQdQvyvEHXFCao1X1HYg/exec" style="border:0; width:100%; height:100%;"></iframe> -->
-
-
-
+<section class="contact" data-aos="fade-up" data-aos-duration="1000" style="padding: 24px; padding-top:10px;">
+        <div class="row" style="background-color: #fff; padding: 24px; padding-top:1px;">
+              <div class="p-24 mx-auto sm:max-w-md md:max-w-lg lg:max-w-xl">
+                    <form action="contact_script.php" style="padding-top:1px;">
+                        <h3 class="heading">You can send a message. We'll be delighted to hear from you</h3>
+                              <input type="text" name="name" placeholder="Full Name" class="box mb-4">
+                              <input type="email" name="email" placeholder="Email Address" class="box mb-4">
+                              <input type="text" name="phone" placeholder="Phone Number" class="box mb-4">
+                              <textarea name="message" class="box mb-4" placeholder="Message" id="" cols="30" rows="10"></textarea>
+                              <input type="submit" value="Submit" class="btn bg-blue-500 hover:bg-blue-600 font-bold py-2 px-6 rounded">
+                    </form>
+              </div>
+        </div>
+</section>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 
