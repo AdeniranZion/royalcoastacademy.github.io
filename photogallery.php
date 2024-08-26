@@ -263,7 +263,7 @@
         }
 
         .pagination .page-item.active .page-link {
-            background-color: purple;
+            /* background-color: purple; */
             color: white;
             font-size: 1.9rem;
         }
@@ -281,7 +281,7 @@
     <section class="pf-head" data-aos="fade-in" data-aos-duration="1500">
         <div class="pf-title" data-aos="fade-up">
             <h1>Photo Gallery</h1>
-            <p>"Join our Parents Forum to connect, share insights, and support each other in our children's educational journey!"</p>
+            <p>Welcome to the Royal Coast Academy Photo Gallery! Here, we capture the essence of our vibrant community, celebrating the moments that make our academy special. From academic achievements to cultural events, sports victories, and daily life around campus, our gallery offers a glimpse into the diverse experiences of our students and staff.</p>
         </div>
     </section>
 
@@ -299,7 +299,7 @@
         <!-- Photo Gallery -->
         <div id="gallery" class="row gallery">
             <?php
-            $dir = 'images/';
+            $dir = 'uploads/';
             $files = array_filter(scandir($dir), function($file) {
                 return strpos($file, 'IMG') === 0 && in_array(pathinfo($file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif']);
             });

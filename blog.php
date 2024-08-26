@@ -1,10 +1,28 @@
 
+
+
+
+
 <?php
+    include 'partials/db_connect.php';
+
+    // Fetch the latest news (the main news)
+    $mainNewsSql = "SELECT * FROM news ORDER BY date DESC LIMIT 1";
+    $mainNewsResult = $conn->query($mainNewsSql);
+    $mainNews = $mainNewsResult->fetch_assoc();
+    
+    // Fetch other news (excluding the main news)
+    $otherNewsSql = "SELECT * FROM news WHERE id != ? ORDER BY date DESC";
+    $otherNewsStmt = $conn->prepare($otherNewsSql);
+    $otherNewsStmt->bind_param('i', $mainNews['id']);
+    $otherNewsStmt->execute();
+    $otherNewsResult = $otherNewsStmt->get_result();
+    
     include_once 'partials/header.php';
 ?>
 <style>
     body {
-        background-color: #f0f0f0;
+        background-color: #fff;
     }
     .blog-header {
         text-align: center;
@@ -34,6 +52,12 @@
         color: #6c757d;
         margin-bottom: 10px;
     }
+    .blog-sidebar {
+        height: 100%; /* Full height of the column */
+        max-height: 62vh; /* Ensure it doesn't exceed viewport height */
+        overflow-y: auto; /* Enable scrolling */
+        scrollbar-width: thin;
+    }
     .blog-sidebar img {
         width: 100%;
         border-radius: 5px;
@@ -51,57 +75,55 @@
 </head>
 <body>
     <div style="background-color: #671470; padding: 35px; padding-right: 12.5%; text-align: right; position: relative;">
-        <h1 class="logo" style="margin: 0; color: #fff8ec; font-size: 3rem;"  data-aos="fade-right">News</h1>
+        <h1 class="logo" style="margin: 0; color: #fff8ec; font-size: 3rem;" data-aos="fade-right">News</h1>
         <div style="position: absolute; bottom: 0; right: 0; width: 90px; height: 2px; background-color: white; margin-right:12%;" data-aos="fade-left"></div>
     </div>
     <div class="container">
         <div class="blog-header">
             <h1>Latest News</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
+            <p>Stay updated with the most recent events and highlights at Royal Coast Academy. Explore our latest stories and insights.</p>
         </div>
-        <div class="row">
+        <div class="row" data-aos="fade-up">
+            <!-- Main News -->
+            <?php if ($mainNews): ?>
             <div class="col-md-8 blog-main">
-                <img src="images/IMG-20240616-WA0023.jpg" alt="Main Post">
-                <h2>Even the all-powerful Pointing has no control about the blind texts</h2>
-                <!-- <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p> -->
-                <p class="blog-meta"><i class="fas fa-calendar"></i> May 29, 2018 &nbsp; | &nbsp; <i class="fas fa-user"></i> Admin <i class="fas fa-comments"></i> 19</p>
-                <div class="col-md-10 blog-body">
-                    <p>World Malaria Day is an international observance commemorated every year on 25 April and recognizes global efforts to control malaria. Globally, 3.3 billion people in 106 countries are at risk of malaria. In 2012, malaria caused an estimated 627,000 deaths, mostly among African children.
-
-Royal Coast Academy’s Initiatives
-At Royal Coast Academy, we believe in the power of education to drive change. In honor of World Malaria Day, our school has organized a series of activities designed to educate our students and community about malaria: Educational Workshops: Our science department has conducted workshops on how malaria spreads, the symptoms of the disease, and the importance of mosquito control and bed nets. Art and Essay Competitions: Students participated in art and essay competitions themed around malaria awareness, with winners receiving recognition at a special assembly. Fundraising for Malaria Prevention: The school has launched a fundraising campaign, with proceeds going to organizations dedicated to providing mosquito nets and medicines to malaria-endemic regions. The Global Fight Against Malaria World Malaria Day serves as a reminder of the ongoing global effort to end malaria. According to the World Health Organization (WHO), over 600,000 people die from malaria each year, most of them young children in sub-Saharan Africa. However, with continued investment in prevention, treatment, and research, there is hope for a malaria-free future. How You Can Help Students and parents at Royal Coast Academy can make a difference by supporting global malaria initiatives. Whether by donating to organizations like the Against Malaria Foundation or spreading awareness in your community, every action counts. Conclusion As we observe World Malaria Day, let’s remember that education is a powerful tool in the fight against malaria. At Royal Coast Academy, we are proud to stand with the global community in raising awareness and taking action to end this devastating disease. Together, we can make a difference.
-                        <br>
-                        <br>
-                    </p>
-                </div>
+                <img src="<?php echo htmlspecialchars($mainNews['image']); ?>" alt="Main Post">
+                <h2><?php echo htmlspecialchars($mainNews['title']); ?></h2>
+                <p class="blog-meta"><i class="fas fa-calendar"></i> <?php echo date('F j, Y', strtotime($mainNews['date'])); ?> &nbsp; | &nbsp; <i class="fas fa-user"></i> Admin</p>
+                    <p><?php echo htmlspecialchars($mainNews['excerpt']); ?></p>
+                    <a href="news.php?id=<?php echo $mainNews['id']; ?>" class="btnSmall">Read More</a>
             </div>
+            <?php else: ?>
+            <p>No main news available.</p>
+            <?php endif; ?>
+            
+            <!-- Sidebar for Other News -->
             <div class="col-md-4 blog-sidebar">
-                <div class="row">
-                    <div class="col-12 mb-3">
-                        <img src="images/IMG-20240616-WA0024.jpg" alt="Sidebar Post">
-                        <h4>Even the all-powerful Pointing has no control about the blind texts</h4>
-                        <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p>
-                    </div>
-                    <div class="col-12 mb-3">
-                        <img src="images/IMG-20240616-WA0027.jpg" alt="Sidebar Post">
-                        <h4>Even the all-powerful Pointing has no control about the blind texts</h4>
-                        <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p>
-                    </div>
-                    <div class="col-12 mb-3">
-                        <img src="images/IMG-20240616-WA0023.jpg" alt="Sidebar Post">
-                        <h4>Even the all-powerful Pointing has no control about the blind texts</h4>
-                        <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p>
-                    </div>
-                    <div class="col-12 mb-3">
-                        <img src="images/IMG-20240616-WA0025.jpg" alt="Sidebar Post">
-                        <h4>Even the all-powerful Pointing has no control about the blind texts</h4>
-                        <p class="blog-meta"><i class="bi bi-calendar3"></i> May 29, 2018 &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> 19</p>
-                    </div>
+                <h3>Other News</h3>
+                <?php if ($otherNewsResult->num_rows > 0): ?>
+                <?php while ($otherNews = $otherNewsResult->fetch_assoc()): ?>
+                <div class="other-news-item">
+                    <img src="<?php echo htmlspecialchars($otherNews['image']); ?>" alt="<?php echo htmlspecialchars($otherNews['title']); ?>">
+                    <h4><?php echo htmlspecialchars($otherNews['title']); ?></h4>
+                    <p class="blog-meta"><i class="fas fa-calendar"></i> <?php echo date('F j, Y', strtotime($otherNews['date'])); ?>  &nbsp; | &nbsp; <i class="bi bi-person"></i> Admin &nbsp; | &nbsp; <i class="bi bi-chat"></i> N/A 
+                    &nbsp; | <a href="news.php?id=<?php echo $otherNews['id']; ?>">Read More</a>
+                </p>
                 </div>
+                <?php endwhile; ?>
+                <?php else: ?>
+                <p>No other news available.</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>
-<?php include_once "partials/footer.php"; ?>
+    
+    <!-- Contact Admissions Section -->
+    <div class="contact-admissions" style="padding: 50px 50px; text-align: center; background-color: #fcf5fc">
+        <h2 style="font-size: 3.5rem; margin-bottom: 20px;">Ready to embark on a journey of excellence at <strong>Royal Coast Academy?</strong></h2>
+        <a href="admissionpage.php" class="btn" >Apply Now</a>
+    </div>
 
+    <?php include_once 'partials/footer.php'; ?>
 </body>
 </html>
+

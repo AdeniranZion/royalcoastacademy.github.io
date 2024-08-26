@@ -164,7 +164,7 @@ include 'partials/db_connect.php';
                 <a href="about.php" class="btn btn-primary" data-aos="zoom-in" data-aos-duration="1500">Read more</a>
             </div>
             <div class="col-md-6 d-flex justify-content-center align-items-center"  data-aos="zoom-in" data-aos-duration="1800">
-                <img src="images/IMG-20240616-WA0029.jpg" class="img-fluid" alt="Science Lab" style="border-radius: 30px; margin-top:20px">
+                <img src="images/IMG-20240616-WA0029.jpg" class="img-fluid" alt="Science Lab" style="border-radius: 30px; margin-top:20px; min-height: 90%; object-fit:cover">
             </div>
         </div>
     </div>

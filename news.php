@@ -65,7 +65,7 @@ include_once 'partials/header.php';
             margin: 15px 0;
         }
         .news-detail p.content {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: #555;
             padding: 10px 0;
             margin: 20px auto;

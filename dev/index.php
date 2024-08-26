@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Neon Object Movement</title>
+  <title>👨‍💻Developer - Royal Coast Academy®</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+
   <style>
+    @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
+    @import url("https://fonts.googleapis.com/css?family=Lora");
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden; /* Prevent scrollbars */
+      font-family: 'Montserrat', sans-serif;
     }
     
     .neon-container {
@@ -21,6 +28,32 @@
       align-items: center;
       background-color: #061c30;
       overflow: hidden; /* Prevent object from going out of bounds */
+      flex-direction: column; /* Stack items vertically */
+    }
+
+    .name {
+      z-index: 2;
+      color: #cccccc;
+      font-size: 2rem;
+      text-align: center; /* Center the text */
+    }
+
+    .github-icon {
+      z-index: 2;
+      color: #cccccc;
+      font-size: 1.4rem;
+      margin-top: 10px;
+    }
+    
+    .github-icon a {
+      color: #cccccc;
+      opacity: 0.7;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .github-icon a:hover {
+      color: #35939f;
+      transition: 0.5s ease;
     }
 
     .triangle {
@@ -33,6 +66,8 @@
       background-color: #0C2439; /* Adjust background color as needed */
       border-radius: 100px; /* Adjust border radius for smoothness */
       transition: transform 0.1s ease-out; /* Smooth movement */
+      flex-direction: column; /* Stack items vertically */
+      opacity: 0.5;
     }
 
     .neon-object {
@@ -45,6 +80,7 @@
       filter: blur(4px); /* Add Gaussian blur effect */
       pointer-events: none; /* Prevent mouse events on the object itself */
       transition: transform 0.1s ease-out; /* Smooth movement */
+      opacity: 0.3;
     }
 
     .neon-object-2 {
@@ -58,6 +94,7 @@
       bottom: 200px;
       left: 200px;
       transition: transform 0.1s ease-out; /* Smooth movement */
+      opacity: 0.4;
     }
     .neon-object-3 {
       width: 120px;
@@ -70,6 +107,8 @@
       top: 200px;
       right: 200px;
       transition: transform 0.1s ease-out; /* Smooth movement */
+      opacity: 0.7;
+
     }
 
     /* Styling for the rotating circle */
@@ -80,12 +119,12 @@
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      /* background-color: rgba(255, 0, 0, 0.5); */
       animation: rotate 4s linear infinite; /* Rotate animation */
       background-image: radial-gradient(circle, rgba(255, 0, 0, 0.5) 15%, transparent 5%); /* Dotted pattern */
       background-size: 15px 15px; /* Size of each dot */
       background-position: 0 0; /* Start position of background */
       position: fixed;
+      opacity: 0.7;
     }
 
     @keyframes rotate {
@@ -97,39 +136,19 @@
       }
     }
 
+
   </style>
 </head>
 <body>
 
-    
-
-
   <div class="neon-container">
-  <?php
-      // Configuration
-      $newsletter_email_list = 'newsletter_subscribers.txt'; // file to store email addresses
-
-      // Form submission handler
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $email = $_POST['email'];
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          // Check if email exists
-          $emails = file($newsletter_email_list, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-          if (!in_array($email, $emails)) {
-            // Add email to list
-            $file = fopen($newsletter_email_list, 'a');
-            fwrite($file, $email . "\n");
-            fclose($file);
-            $success = true;
-          } else {
-            $error = 'Email address already subscribed';
-          }
-        } else {
-          $error = 'Invalid email address';
-        }
-      }
-      ?>
-
+    <div class="name">
+      <?php echo strtoupper("Yemi Adeniran."); ?>
+    </div>
+    <div class="github-icon">
+      <a href="https://github.com/AdeniranZion" class="fa-brands fa-github" target="_blank"></a>
+      <a href="https://x.com/zionaadeniran" class="fa-brands fa-x-twitter" target="_blank"></a>
+    </div>
 
     <div class="neon-object"></div>
     <div class="neon-object-2"></div>
@@ -140,6 +159,21 @@
   <!-- Rotating circle element -->
   <div class="rotating-circle"></div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+
+  <script>
+    // Animate the name and GitHub icon with GSAP
+    gsap.fromTo(".name", 
+      { opacity: 0, y: -30 }, // Start state
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" } // End state
+    );
+    
+    gsap.fromTo(".github-icon", 
+      { opacity: 0, y: -30 }, // Start state
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 0.5 } // End state with delay
+    );
+  </script>
+  
   <script>
     document.addEventListener('mousemove', function(e) {
       const neonObject = document.querySelector('.neon-object');
@@ -158,7 +192,7 @@
       const distanceY = e.clientY - centerY;
 
       // Set a multiplier to control the trailing effect
-      const multiplier = 0.04; // Adjust this value for the trailing effect
+      const multiplier = 0.023; // Adjust this value for the trailing effect
 
       // Update the position of neon-object with a trailing effect
       neonObject.style.transform = `translate(${multiplier * distanceX}px, ${multiplier * distanceY}px)`;
@@ -173,26 +207,6 @@
       triangle.style.transform = `translate(${-multiplier * distanceX}px, ${-multiplier * distanceY}px)`;
 
     });
-  </script>
-
-  <script>
-    const successModal = document.getElementById('success-modal');
-    const closeBtn = document.getElementById('close-modal');
-    
-    // Show the modal when someone subscribes
-    <?php if (isset($success)): ?>
-      successModal.style.display = 'block';
-    <?php endif; ?>
-    
-    // Close the modal when the close button is clicked
-    closeBtn.onclick = function() {
-      successModal.style.display = 'none';
-    }
-
-    setTimeout(() => {
-      successModal.style.display = 'none';
-    }, 3000);
-
   </script>
 
 </body>

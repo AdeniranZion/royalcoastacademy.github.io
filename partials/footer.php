@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          <p>Follow Us:</p>
          <div class="share">
             <a href="#" class="fa-brands fa-facebook-f" style="margin-left: -15px;"></a>
-            <a href="#" class="fa-brands fa-twitter"></a>
+            <a href="#" class="fa-brands fa-x-twitter"></a>
             <a href="https://www.instagram.com/royalcoastacademy/" class="fa-brands fa-instagram" target="_blank"></a>
             <a href="#" class="fa-brands fa-linkedin"></a>
             <a href="https://wa.me/+2348027664776" class="fa-brands fa-whatsapp"></a>
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <div class="box">
          <h3>Quick links</h3>
          <a href="/royalcoastacademy/admissionpage.php" class="link">Admissions</a>
-         <a href="/royalcoastacademy/news.php?id=22" class="link">News and Events</a>
+         <a href="/royalcoastacademy/blog.php?id=22" class="link">News and Events</a>
          <a href="/royalcoastacademy/photogallery.php" class="link">Photo Gallery</a>
          <a href="/royalcoastacademy/parentforum.php" class="link">Parents Forum</a>
          <a href="/royalcoastacademy/unavailable.php" class="link">Job Oppurtunities</a>

@@ -54,11 +54,11 @@
 </head>
 <body>
     <div class="container">
-        <h2>Oops!</h2>
+        <h2>Coming Soon!</h2>
         <div class="image">
             <img src="images/undraw_Page_not_found_re_e9o6.png" alt="404 Illustration">
         </div>
-        <p>The page you are looking for doesn’t exist or has been moved.</p>
+        <p>The page you are looking for is under construction.</p>
         <a href="#" class="btn" onclick="history.back(); return false;">Go Back</a>
       </div>
 </body>

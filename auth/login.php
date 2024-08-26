@@ -155,7 +155,7 @@ session_start();
 
     <div class="footer">
         <div class="credit">
-            <p>Copyright &copy; <?php echo date("Y");?> Royal Coast Academy.</p>
+            <p>Copyright &copy; <?php echo date("Y");?> Royal Coast Academy. <a href="../dev" target="_blank">Developer.</a></p>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

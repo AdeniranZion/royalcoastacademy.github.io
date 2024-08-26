@@ -5,12 +5,12 @@ let inactivityTime = function () {
     // Redirect function
     const redirectToLogin = () => {
         // Send AJAX request to terminate the session
-        fetch('http://localhost/royalcoastacademy/logout.php', {
+        fetch('http://localhost/royalcoastacademy/auth/logout.php', {
             method: 'POST',
         }).then(response => {
             if (response.ok) {
                 // Redirect to login page after session termination
-                window.location.href = 'http://localhost/royalcoastacademy/login.php';
+                window.location.href = 'http://localhost/royalcoastacademy/auth/login.php';
             }
         }).catch(error => {
             console.error('Error logging out:', error);

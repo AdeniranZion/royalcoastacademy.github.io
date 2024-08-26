@@ -8,11 +8,15 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+$sqlPhotos = "SELECT COUNT(*) AS total_photos FROM photos";
+$resultPhotos = $conn->query($sqlPhotos);
+$totalPhotos = ($resultPhotos->num_rows > 0) ? $resultPhotos->fetch_assoc()['total_photos'] : 0;
+
 include_once 'header.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Handle the file upload
-    $targetDir = "images/";
+    $targetDir = "../uploads/";
     $fileName = basename($_FILES["image"]["name"]);
     $targetFilePath = $targetDir . $fileName;
     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
@@ -54,6 +58,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 </style>
 <div class="container">
+<div class="my-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="fas fa-image card-icon card-news"></i>
+                <h5 class="card-title">Total Photos Uploaded</h5>
+                <p class="h3"><?php echo $totalPhotos; ?></p>
+            </div>
+        </div>
+    </div>
     <h2 class="my-4">Upload a New Photo</h2>
 
     <?php if (isset($statusMsg)) { ?>
@@ -77,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
         <hr>
     <a href="index.php" class="btn btn-outline-danger">Go back</a>
+
 
 </div>
 
