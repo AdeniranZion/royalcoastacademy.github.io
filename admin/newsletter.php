@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Read the contents of the file
-$file = '../test/newsletter_subscribers.txt';
+$file = '../dev/newsletter_subscribers.txt';
 $subscribers = [];
 
 if (file_exists($file)) {

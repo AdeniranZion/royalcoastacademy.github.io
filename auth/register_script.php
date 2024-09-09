@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once 'db_connect.php';
+require_once '../partials/db_connect.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
